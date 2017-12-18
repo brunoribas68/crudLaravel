@@ -12,6 +12,7 @@
 			<th>Valor</td>
 			<th>Descrição</td>
 			<th>Quantidade</td>
+			<th>Tamanho</td>
 			<th>Detalhes</th>
 			<th>Excluir</th>
 			<th>Editar</th>
@@ -22,6 +23,7 @@
 		    <td>{{ $p->valor }}</td>
 		    <td>{{ $p->descricao }}</td>
 		    <td>{{ $p->quantidade }}</td>
+		    <td>{{ $p->tamanho }}</td>
 		    <td>
 			    <a href="/produtos/mostra/{{ $p->id }}"><i class="material-icons">&#xE8B6;</i></a>
 			</td>

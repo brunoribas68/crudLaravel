@@ -13,7 +13,11 @@
 		</div>
 		<div class='form-group'>
 			<label for="">Quantidade</label>
-			<input name="quantidade" class="form-control"type="text">
+			<input name="quantidade" class="form-control" type="text">
+		</div>
+		<div class='form-group'>
+			<label for="">Tamanho</label>
+			<input name="tamanho" class="form-control" type="text">
 		</div>
 		<div class='form-group'>
 			<label for="">Descricao</label>
