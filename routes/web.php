@@ -8,6 +8,4 @@ Route::get('/produtos/novo','ProdutoController@novo');
 Route::get('/produtos/remover/{id}','ProdutoController@remover');
 Route::get('/produtos/updateform/{id}','ProdutoController@updateform');
 Route::post('/produtos/adiciona','ProdutoController@adiciona');
-Route::post('/produtos/update','ProdutoController@update');
-
-
+Route::post('/produtos/update/{id}','ProdutoController@update');

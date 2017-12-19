@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Request;
-use Illuminate\Support\Facades\DB;
 use App\Produto;
-use Validator;
+use App\Http\Requests\ProdutosRequest;
+
 
 class ProdutoController extends Controller
 {
@@ -27,19 +27,13 @@ class ProdutoController extends Controller
     	return view('produtos.formulario');
     }
 
-     public function adiciona(){
+    public function adiciona(ProdutosRequest $request){
 
-        //pegar informacoes do form
-        $validator = Validator::make(
-            ['nome' => Request::input('nome')],
-            ['nome' => 'required|min:3']
-        );
-        if($validator->fails())
-        {
-            $validator->messages();
-        }
-        Produto::create(Request::all());
-    	return redirect('/produtos')->withInput();
+        Produto::create($request->all());
+
+        return redirect()
+            ->action('ProdutoController@lista')
+            ->withInput(Request::only('nome'));
     }
 
     public function remover($id){
@@ -51,24 +45,15 @@ class ProdutoController extends Controller
 
     public function updateform($id){
 
-    	$produtos = DB::select('select * from produtos where id = ?',[$id]);
-		return view('produtos.formularioupdate')->with('produtos',$produtos[0]);
+    	$produtos = Produto::find($id);
+		return view('produtos.formularioupdate')->with('produtos',$produtos);
     }
 
-      public function update(){
+      public function update($id){
 
       	//pegar informacoes do form
-     	/*$nome = Request::input('nome');
-     	$quantidade = Request::input('quantidade');
-     	$valor = Request::input('valor');
-     	$descricao = Request::input('descricao');
-    	$id = Request::input('id');
-
-    	//salvar no bd
-		DB::update("update produtos set nome = ?, quantidade = ?, valor = ?, descricao = ? where id =".$id,array($nome, $quantidade, $valor, $descricao));
-*/
-        Produto::update(Request::all());
-        return redirect('/produtos')->withInput();
-    	//return view('produtos.update')->with('nome',$nome);
+      Produto::where('id', $id)
+          ->update(Request::except('_method', '_token'));
+      return redirect('/produtos');
     }
 }

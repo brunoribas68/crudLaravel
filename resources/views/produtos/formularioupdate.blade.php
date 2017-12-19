@@ -1,7 +1,7 @@
 @extends('layout.master')
 @section('conteudo')
-	<form action="/produtos/update" method="POST">
-		
+	<form action="/produtos/update/{{$produtos->id}}" method="POST">
+
 		<input type="hidden" value="{{csrf_token() }}" name="_token" >
 		<input type="hidden" value="{{$produtos->id}}" name="id" >
 		<div class='form-group'>
@@ -15,6 +15,10 @@
 		<div class='form-group'>
 			<label for="">Quantidade</label>
 			<input name="quantidade" class="form-control"type="text" value="{{$produtos->quantidade}}">
+		</div>
+		<div class='form-group'>
+			<label for="">Tamanho</label>
+			<input name="tamanho" class="form-control"type="text" value="{{$produtos->tamanho}}">
 		</div>
 		<div class='form-group'>
 			<label for="">Descricao</label>

@@ -9,4 +9,5 @@ class Produto extends Model
    public $timestamps = false;
 
    protected $fillable = array('nome','descricao','quantidade','valor','tamanho');
+
 }
