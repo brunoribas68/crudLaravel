@@ -8,6 +8,9 @@ class Produto extends Model
 {
    public $timestamps = false;
 
-   protected $fillable = array('nome','descricao','quantidade','valor','tamanho');
-
+   protected $fillable = array('nome','descricao','quantidade','valor','tamanho','categoria_id');
+   public function categoria()
+   {
+    return $this->belongsto('App\Categoria');
+   }
 }

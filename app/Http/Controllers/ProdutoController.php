@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use Request;
 use App\Produto;
 use App\Http\Requests\ProdutosRequest;
-
+use Illuminate\Support\Facades\Auth;
+use App\Categoria;
 
 class ProdutoController extends Controller
 {
     public function lista(){
-
         $produtos = Produto::all();
         return view('produtos.listagem')->with('produtos',$produtos);
     }
@@ -24,7 +24,7 @@ class ProdutoController extends Controller
 
     public function novo(){
 
-    	return view('produtos.formulario');
+    	return view('produtos.formulario')->with('categorias',Categoria::all());;
     }
 
     public function adiciona(ProdutosRequest $request){

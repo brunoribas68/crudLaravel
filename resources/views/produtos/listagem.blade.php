@@ -6,13 +6,14 @@
  @else
 	<h1>Listagem de Produtos</h1>
 	<table class="table">
-		
+
 		<tr>
 			<th>Nome</td>
 			<th>Valor</td>
 			<th>Descrição</td>
 			<th>Quantidade</td>
 			<th>Tamanho</td>
+      <th>Categoria</td>
 			<th>Detalhes</th>
 			<th>Excluir</th>
 			<th>Editar</th>
@@ -24,6 +25,7 @@
 		    <td>{{ $p->descricao }}</td>
 		    <td>{{ $p->quantidade }}</td>
 		    <td>{{ $p->tamanho }}</td>
+        <td>{{ $p->categoria->nome }}</td>
 		    <td>
 			    <a href="/produtos/mostra/{{ $p->id }}"><i class="material-icons">&#xE8B6;</i></a>
 			</td>
@@ -35,7 +37,7 @@
 			</td>
 		  </tr>
 		@endforeach
-		
+
 	</table>
 	@if(old ('nome'))
 		<div class="alert alert-success">

@@ -9,3 +9,10 @@ Route::get('/produtos/remover/{id}','ProdutoController@remover');
 Route::get('/produtos/updateform/{id}','ProdutoController@updateform');
 Route::post('/produtos/adiciona','ProdutoController@adiciona');
 Route::post('/produtos/update/{id}','ProdutoController@update');
+
+
+Route::get('/login','LoginController@form');
+Route::post('/login','LoginController@login');
+//Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
